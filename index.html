@@ -3,40 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricelist Produk</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Modern PriceList | NamaBrand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--dark);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .popular-badge {
+            background: linear-gradient(to right, var(--secondary), #f97316);
+        }
+
+        .feature-icon {
+            color: var(--secondary);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Daftar Harga Produk</h1>
-        <p>Temukan produk terbaik dengan harga terjangkau!</p>
+    <!-- Floating Action Button -->
+    <button id="contactBtn" class="fixed bottom-8 right-8 bg-indigo-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-2xl hover:bg-indigo-700 transition-all z-50">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Navbar -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40" alt="Logo perusahaan berupa ikon modern dengan gradasi ungu dan oranye" class="w-10 h-10 rounded-lg">
+                    <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">ModernPrice</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#products" class="text-gray-600 hover:text-indigo-600 font-medium transition">Produk</a>
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 font-medium transition">Fitur</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-indigo-600 font-medium transition">Testimoni</a>
+                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 font-medium transition">Kontak</a>
+                </nav>
+                
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
     </header>
-    <main>
-        <section class="pricelist">
-            <div class="product-card">
-                <h2>Produk A</h2>
-                <p class="desc">Deskripsi singkat produk A.</p>
-                <p class="price">Rp50.000</p>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fadeIn">Solusi Harga Terbaik untuk Bisnis Anda</h1>
+                <p class="text-xl text-indigo-100 mb-8">Temukan paket produk kami yang dirancang khusus untuk membantu bisnis Anda berkembang pesat</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#products" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition duration-300 shadow-md">Lihat Produk</a>
+                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">Hubungi Kami</a>
+                </div>
             </div>
-            <div class="product-card">
-                <h2>Produk B</h2>
-                <p class="desc">Deskripsi singkat produk B.</p>
-                <p class="price">Rp75.000</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Mengapa Memilih Kami?</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Kami menyediakan solusi terbaik dengan harga kompetitif dan fitur unggulan</p>
             </div>
-            <div class="product-card">
-                <h2>Produk C</h2>
-                <p class="desc">Deskripsi singkat produk C.</p>
-                <p class="price">Rp120.000</p>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt feature-icon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Perform Tinggi</h3>
+                    <p class="text-gray-600">Produk kami dioptimalkan untuk memberikan performa maksimal dengan efisiensi terbaik.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-headset feature-icon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Dukungan 24/7</h3>
+                    <p class="text-gray-600">Tim support kami siap membantu Anda kapanpun dibutuhkan.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt feature-icon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Keamanan Terjamin</h3>
+                    <p class="text-gray-600">Sistem keamanan multi-layer untuk melindungi data Anda.</p>
+                </div>
             </div>
-            <div class="product-card">
-                <h2>Produk D</h2>
-                <p class="desc">Deskripsi singkat produk D.</p>
-                <p class="price">Rp95.000</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Paket Harga Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Pilih paket yang sesuai dengan kebutuhan bisnis Anda</p>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 Toko Kamu. All rights reserved.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden price-card transition-all duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
+                        <p class="text-gray-600 mb-6">Untuk bisnis kecil yang baru memulai</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">Rp199K</span>
+                            <span class="text-gray-600">/bulan</span>
+                        </div>
+                        <button class="w-full py-3 px-4 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition">Pilih Paket</button>
+                    </div>
+                    <div class="border-t border-gray-200 px-8 py-6 bg-gray-50">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>5 GB Storage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dukungan Email</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Basic Analytics</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden price-card transform scale-105 relative transition-all duration-300">
+                    <div class="absolute top-0 right-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg popular-badge">POPULAR</div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Business</h3>
+                        <p class="text-gray-600 mb-6">Untuk bisnis yang sedang berkembang</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">Rp499K</span>
+                            <span class="text-gray-600">/bulan</span>
+                        </div>
+                        <button class="w-full py-3 px-4 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">Pilih Paket</button>
+                    </div>
+                    <div class="border-t border-gray-200 px-8 py-6 bg-gray-50">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>50 GB Storage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dukungan Prioritas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Advanced Analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Integrasi API</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden price-card transition-all duration-300">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Enterprise</h3>
+                        <p class="text-gray-600 mb-6">Untuk bisnis besar dengan kebutuhan khusus</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">Rp1,299K</span>
+                            <span class="text-gray-600">/bulan</span>
+                        </div>
+                        <button class="w-full py-3 px-4 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition">Pilih Paket</button>
+                    </div>
+                    <div class="border-t border-gray-200 px-8 py-6 bg-gray-50">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Unlimited Storage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dukungan 24/7</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Pro Analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Integrasi Custom</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Dedicated Account Manager</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa Kata Klien Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Testimoni dari pelanggan yang puas dengan layanan kami</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-md transition">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="Foto profil seorang pria dewasa keturunan Asia dengan senyum tulus" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold text-lg">Andi Wijaya</h4>
+                            <p class="text-gray-600 text-sm">CEO TechStart</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Produk ini sangat membantu bisnis kami berkembang pesat. Layanan supportnya juga luar biasa!"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-md transition">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="Foto profil wanita profesional dengan ekspresi percaya diri" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold text-lg">Sari Dewi</h4>
+                            <p class="text-gray-600 text-sm">Marketing Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Harga sangat kompetitif dengan fitur yang lengkap. ROI kami meningkat signifikan setelah beralih ke produk ini."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-md transition">
+                    <div class="flex items-center mb-6">
+                        <img src="https://placehold.co/80x80" alt="Foto profil seorang konsultan bisnis dengan kacamata dan penampilan formal" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold text-lg">Budi Santoso</h4>
+                            <p class="text-gray-600 text-sm">Business Consultant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Saya merekomendasikan produk ini ke semua klien saya. Solusi sempurna untuk bisnis skala kecil hingga besar."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Meningkatkan Bisnis Anda?</h2>
+            <p class="text-lg text-indigo-100 max-w-2xl mx-auto mb-8">Mulai hari ini dan dapatkan penawaran spesial untuk pendaftaran perdana!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#products" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition duration-300 shadow-md">Lihat Paket</a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Hubungi Kami</h2>
+                    <p class="text-gray-600 mb-8">Punya pertanyaan atau butuh bantuan? Tim kami siap membantu Anda.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Kantor Kami</h4>
+                                <p class="text-gray-600">Jl. Profesional No. 123, Jakarta Selatan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-envelope text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">info@modernprice.co.id</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-phone-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Telepon</h4>
+                                <p class="text-gray-600">(021) 1234-5678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="bg-gray-50 p-8 rounded-xl">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 transition">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://placehold.co/40x40" alt="Logo perusahaan footer dengan desain monokrom" class="w-8 h-8">
+                        <span class="text-xl font-bold">ModernPrice</span>
+                    </div>
+                    <p class="text-gray-400">Solusi harga terbaik untuk perkembangan bisnis Anda.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produk</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Paket Starter</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Paket Business</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Paket Enterprise</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Fitur</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Perusahaan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Karir</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 ModernPrice. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Floating button interaction
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on scroll
+        const elements = document.querySelectorAll('.price-card, .testimonial');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {threshold: 0.1});
+        
+        elements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease-out';
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
